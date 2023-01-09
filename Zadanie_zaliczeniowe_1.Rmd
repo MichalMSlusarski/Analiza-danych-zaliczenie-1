@@ -1,0 +1,133 @@
+---
+title: "Programowanie w R"
+author: "Szymon Nowakowski"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+#code from https://selbydavid.com/2017/06/18/rmarkdown-alerts/
+knitr::knit_hooks$set(
+   error = function(x, options) {
+     paste('\n\n<div class="alert alert-danger">',
+           gsub('##', '\n', gsub('^##\ Error', '**Error**', x)),
+           '</div>', sep = '\n')
+   },
+   warning = function(x, options) {
+     paste('\n\n<div class="alert alert-warning">',
+           gsub('##', '\n', gsub('^##\ Warning:', '**Warning**', x)),
+           '</div>', sep = '\n')
+   },
+   message = function(x, options) {
+     paste('\n\n<div class="alert alert-info">',
+           gsub('##', '\n', x),
+           '</div>', sep = '\n')
+   }
+)
+
+```
+
+
+
+## Zasady zaliczania przedmiotu *Programowanie w R*
+
+Zaliczenie przedmiotu, zgodnie z USOS, odbywa się poprzez rozwiązanie i zaliczenie **dwóch** zadań programistycznych.
+
+Dodatkowo, co najmniej jedno z tych zadań musi zostać zaprezentowane prowadzącemu w postaci około 10 minutowej rozmowy n.t. Waszego rozwiązania. Mogą Państwo wybrać, które zadanie zaprezentujecie. **Prezentacja jest warunkiem koniecznym zaliczenia przedmiotu**. Jeśli nie będziecie Państwo zadowoleni z przebiegu pierwszej prezentacji, macie prawo zaprezentować drugie zadanie.
+
+W ramach rozwiązania każdego z dwóch zadań powinien powstać dokument w RMarkdown (**czyli .Rmd**, a nie .html). Dokument ten należy przesłać mailowo na adres email *s.nowakowski@mimuw.edu.pl*, tytuł maila: **"Zadanie zaliczeniowe nr ..."**.
+
+- Ostatecznym terminem nadsyłania rozwiązań zadania numer 1 jest wtorek 17.01.2023, 23:59.
+- Ostatecznym terminem nadsyłania rozwiązań zadania numer 2 jest wtorek 24.01.2023, 23:59.
+- Ostatecznym możliwym terminem prezentacji jest wtorek 24.01.2023, godz 14.00.
+
+Rozwiązania zadań nadesłane po terminie nie będą brane pod uwagę przy ocenie.
+
+Termin prezentacji mogą Państwo wybrać spośród następujących terminów:
+
+- w czasie zajęć, jeśli grupa jest zajęta pracą własną (lub w czasie przerwy między zajęciami obu grup),
+- termin konsultacji na Wydziale Dziennikarstwa, Informacji i Bibliologii, każdy wtorek 13.00-14.00 (konieczny jest własny laptop studenta),
+- termin konsultacji na Wydziale Matematyki, Informatyki i Mechaniki, ul. Banacha 2, pokój 4250, każdy poniedziałek 15.45-16.45,
+- **sobota 14.01.2023 w godzinach 10.00-16.00** w Budynku Wydziału Fizyki, ul. Pasteura 5, pokój B.239a (II. piętro), 
+- **sobota 21.01.2023 w godzinach 10.00-16.00** w Budynku Wydziału Fizyki, ul. Pasteura 5, pokój B.239a (II. piętro).
+
+Osoby, które nie zaliczą w terminie, będą miały możliwość zaliczenia przedmiotu w *sesji poprawkowej*.
+
+```
+Zgodnie z uchwałami Rad Dydaktycznych ws. zasad przeprowadzania egzaminów na Państwa Wydziale zaliczenie na ocenę odbywa się przed sesją (§10: zaliczenie na ocenę w pierwszym terminie odbywa się w czasie ostatnich zajęć lub w okresie przed rozpoczęciem sesji egzaminacyjnej. Termin poprawkowy zaliczenia na ocenę powinien być wyznaczony w poprawkowej sesji egzaminacyjnej).
+```
+# Zadanie Zaliczeniowe nr 1
+
+**Teraz proszę przeczytać poniższy fikcyjny opis zawierający opis Zadania nr 1.**
+
+**Dane są dostępne pod tym linkiem: https://mimuw.edu.pl/~szym/bulbs.csv**.
+
+
+## Innowacje producenta żarówek LaLuz
+
+Producent żarówek LaLuz w wyniku intensywnych prac badawczo-rozwojowych
+stwierdził, że jedną z przyczyn krótkiego czasu życia żarówek jest niepełna
+szczelność produkowanych przez nich szklanych baniek zawierających żarzący się drucik wolframowy.
+Na skutek nieszczelności stopniowo dochodzi do ulatniania się gazu szlachetnego umieszczanego przez producenta w bańce w czasie produkcji żarówki. Ulatniający się gaz szlachetny jest zastępowany przez powietrze atmosferyczne, które zawiera tlen, który szybko utlenia żarzący się drut wolframowy. Prowadzi to to do szybkiego przepalania się żarówek.
+
+Z drugiej strony, badania panelowe wśród grup konsumentów jasno pokazały, że średni czas życia żarówek to drugi najważniejszy czynnik (zaraz po cenie) wpływający na decyzje zakupowe konsumentów.
+
+W tej sytuacji, zarząd ukierunkował dalsze badania na uszczelnienie szklanych baniek żarówek.
+
+W wyniku tych badań powstały dwa produkty:
+
+- żarówki DoubleBulb o podwójnej szklanej bańce. Według działu badań i rozwoju firmy, taka konstrukcja 
+  znacznie zwiększa szczelność i w efekcie pozwala znacząco przedłużyć czas życia żarówek.
+- spray CoatItYourself. Jest to unikalny produkt, którym użytkownik może po zakupie spryskiwać żarówkę (i to zarówno wyprodukowaną w technologi pojedynczej jak i podwójnej szklanej bańki) celem podwyższenia jej szczelności, a więc w efekcie czasu życia żarówki. Fragment ulotki: *Rekomenduje się stosowanie produktu co godzinę. Używać jedynie na całkowicie wychłodzoną żarówkę!*
+
+Ponieważ firmie zależy na tym, by uzyskać możliwie szeroki medialny rozgłos całego przedsięwzięcia, zwrócił się do szeregu periodyków o ogólnokrajowym zasięgu o umieszczenie
+płatnych artykułów sponsorowanych opisujących oba nowatorskie produkty i benefity z nich płynące.
+
+
+## Dziennikarskie śledztwo
+
+Redaktor naczelna periodyku, który zatrudnia Ciebie, wezwała Cię na rozmowę w tej sprawie. Otóż, nie jest do końca jasne, czy te produkty w ogóle działają w taki sposób, jak przedstawia to producent. W trosce
+o zachowanie najwyższych standardów etycznych dziennikarstwa przeprowadziła ona dziennikarskie śledztwo:
+
+Łącznie 400 żarówek, po dwieście każdego typu (zwykłych oraz DoubleBulb) zostało kupionych przez pracowników technicznych periodyku, w którym pracujesz. Połowa żarówek każdego typu była użytkowana normalnie, a druga połowa była pokrywana sprayem CoatItYourself, przestrzegając zaleceń producenta co do użytkowania tego preparatu. Tak się akurat złożyło, że do spryskiwania tych wszystkich żarówek przez cały okres trwania eksperymentu zużyto do końca **jedno** opakowanie CoatItYourself. Spray jest więc naprawdę wydajny, ale również bardzo drogi (koszt zakupu opakowania jest do znalezienia w pliku z danymi).
+
+Naczelna poprosiła Cię
+o przeanalizowanie uzyskanych danych dotyczących czasu życia tych 400 żarówek. 
+
+**Dane są dostępne pod tym linkiem: https://mimuw.edu.pl/~szym/bulbs.csv**. 
+
+W efekcie Twojej analizy powinien powstać dokument w formacie RMarkdown, używanym jako standard do składania tekstu do druku w periodyku, w którym pracujesz (pamiętaj jednak, że tak naprawdę szefowa będzie czytać dokument w formacie HTML, który utworzy z Twojego dokumentu RMarkdown przy użyciu przycisku *Knit* w RStudio).
+
+## Szczegółowe pytania
+
+Szczegółowe pytania, które stawia przed Tobą redaktor naczelna, są następujące:
+
+1. Czy rzeczywiście żarówki o podwójnej bańce mają dłuższy średni czas życia niż żarówki o pojedynczej bańce?
+2. Czy rzeczywiście spray przedłuża średni czas życia żarówki? Obu typów?
+3. Czy używanie którejś z tych alternatyw do zwykłych żarówek o pojedynczej bańce ma sens ekonomiczny?  Uzasadnij swoją odpowiedź. 
+4. Może mógłbyś/mogłabyś zaproponować producentowi jakieś zmiany, dzięki którym wzrośnie użyteczność oraz ekonomiczny sens stosowania sprayu?
+
+Pytania pomocnicze, które warto sobie zadać, bo pomogą odpowiedzieć na 4 główne pytania:
+
+1. Dla każdej żarówki policz, jaka jest cena jednej godziny jej użytkowania. Dla żarówek sprayowanych co godzinę, dolicz cenę jednego psiku preparatem (żarówki należy psikać co godzinę).
+2. Porównując sens ekonomiczny użytkowania różnych żarówek, warto porównywać ze sobą średnią cenę jednej godziny ich użytkowania.
+3. Zakładając dzienne użycie żarówki 4 godziny/dobę, policz na ile lat średnio starcza jedna żarówka.
+4. Przyjmij pewne założenia dotyczące liczby żarówek w gospodarstwie domowym. Policz, na jak długo starczy w tym modelowym gospodarstwie domowym jedno opakowanie sprayu.
+
+
+Wśród innych redaktorów czasopisma krąży fama, że szefowa nie uznaje wniosków wyciągniętych bez wnikliwej argumentacji, a od podwładnych obsesyjnie wręcz żąda, by każdy krok analizy danych i rozumowania był detalicznie zaprezentowany przy użyciu kodu R, a płynące zeń wnioski omówione krok po kroku. 
+
+W dokumentacji nie powinien być więc pominięty żaden detaliczny kroczek:
+
+1. Opisz, jak odczytujesz dane. Opisz argumenty zastosowane przy wywołaniu funkcji. 
+2. Pokaż główne statystyki odczytanych danych (ile jest wierszy, jakie są kolumny, główne statystyki każdej kolumny).
+3. Zastanów się nad postępowaniem (i **argumentuj** wszystkie decyzje) dotyczącym brakujących danych oraz ewentualnych danych odstających. Dane odstające możesz zidentyfikować na wykresach.
+4. Zaprezentuj wczytane dane przy użyciu wykresów, które będą **czytelnie** przekazywać możliwie najwięcej informacji o danych zachowując estetyczną formę. Omów, co z tych wykresów wynika. Wnioski z wykresów traktuj jako przesłanki dalszego rozumowania (patrz następny punkt).
+5. Jeśli chcesz twierdzić, że jakaś średnia jest większa niż inna średnia, podpieraj się uzyskanymi wykresami jako przesłanką, ale ostatecznym dowodem może być tylko test statystyczny. Użyj testu statystycznego w swojej pracy za każdym razem, gdy porównujesz wartości dwóch średnich.
+6. Argumentuj, dlaczego wybrałeś/aś taki, a nie inny, test statystyczny oraz dlaczego wybrałeś/aś taką, a nie inną, hipotezę alternatywną. **Pamiętaj jednak, to nie jest praca ze statystyki. To praca z R. Naczelna, zresztą, ma dość mgliste pojęcie o statystyce**.
+7. Jeśli potrafisz, wstaw do dokumentu lub wykresów wzory matematyczne, ale nie na siłę. **Znów: to praca z R, nie z Latexa**.
+8. Niech RMarkdown będzie czytelny, stosuj z umiarem elementy formatowania, ale nic na siłę: **to praca z R, nie z Markdownu**.
+
