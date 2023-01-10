@@ -79,6 +79,22 @@ boxplot(regular_bulbs_no_spray$time_in_hours,
         col = c('lightblue', 'lightgreen', 'yellow', 'orange')
         )
 
+double_bulbs_no_spray_no_outliers <- subset(double_bulbs_no_spray, time_in_hours < 10000)
+regular_bulbs_sprayed_no_outliers <- subset(regular_bulbs_sprayed, time_in_hours < 8000)
+
+vioplot(regular_bulbs_no_spray$time_in_hours, 
+        regular_bulbs_sprayed_no_outliers$time_in_hours, 
+        double_bulbs_no_spray_no_outliers$time_in_hours, 
+        double_bulbs_sprayed$time_in_hours,
+        xlab = 'Typ żarówek',
+        ylab = 'Czas działania [h]',
+        varwidth = F,
+        outline = F,
+        main = 'Porównanie typów żarówek',
+        at = c(1,2,3,4),
+        names = c('Zwykła', 'Zwykła + spray', 'Podwójna', 'Podwójna + spray'),
+        col = c('lightblue', 'lightgreen', 'yellow', 'orange'))
+
 # Czy używanie którejś z tych alternatyw do zwykłych żarówek o pojedynczej bańce ma sens ekonomiczny? Uzasadnij swoją odpowiedź.
 
 
