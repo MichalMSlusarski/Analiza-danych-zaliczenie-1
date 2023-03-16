@@ -1,4 +1,5 @@
-### Ładowanie podstawowych bibliotek
+## Praca zaliczeniowa z przedmiotu Analiza Danych w R.
+### Analiza danych dot. efektywności różnych typów żarówek
 
 Przed przystąpieniem do utworzenia niniejszego dokumentu załadowane zostały następujące
 biblioteki (może być wymagana instalacja):
