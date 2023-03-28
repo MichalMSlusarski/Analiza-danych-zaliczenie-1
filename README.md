@@ -106,7 +106,7 @@ Porównanie średnich rozpoczęto od wizualizacji danych za pomocą wykresów sk
   points(2, mean(double_bulbs$time_in_hours), col="red", pch = 19)
 ```
 
- <img src="1.png" alt="" width="500" height="300"> 
+ <img src="1.png" alt="" width="500" height="400"> 
 
 Wizualna reprezentacja wskazuje, że średnia czasu działania żarówek podwójnych jest wyższa niż żarówek zwykłych. Jednakże, aby móc stwierdzić, że jest to różnica istotna statystycznie, należy przeprowadzić test. Przed wybraniem testu równości średnich, posłużono się testem Shapiro-Wika, celem ustalenia, czy dane mają rozkład normalny:
 
@@ -161,7 +161,7 @@ Analogicznie do poprzedniego pytania, tu też analizę poprzedza wizualizacja da
   
 ```
 
-<img src="2.png" alt="" width="500" height="300"> 
+<img src="2.png" alt="" width="500" height="400"> 
 
 Przystąpiono do testowania hipotezy $H_0$ o normalności rozkładów testem Shapiro-Wilka ($\alpha = 0.05$):
 
